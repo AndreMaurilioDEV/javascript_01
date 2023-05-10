@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        html{
+            height: 100vh;
+        }
+        body{
+            padding: 0;
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: lightslategray;
+        }
+
+        form{
+           display: flex;
+           flex-direction: column;
+           gap: 20px;
+            background-color: white;
+            height: 450px;
+            width: 450px;
+            padding: 20px;
+        }
+
+        input{
+            padding: 10px 100px 10px 5px;
+        }
+
+        #btn-submit{
+            width: 100%;
+            padding: 20px 0px;
+            text-align: center;
+        }
+
+        label{
+            font-size: 18px;
+        }
+
+        .paragrafo-resultado{
+            background-color: green;
+            padding: 10px;
+            font-size: 24px;
+        }
+
+        .incorreto{
+            background-color: rgb(195, 96, 96);
+            font-size: 24px;
+            padding: 10px;
+        }
+    </style>
+    
+</head>
+
+     <form action="#" id="formulario" method="post">
+        <h1>CALCULE SEU IMC</h1>
+         <label for="inp-peso">Peso:</label>
+                <input type="text" id="inp-peso">
+            
+                <label for="inp-altura">Altura:</label>
+                <input type="text" id="inp-altura">
+            
+                <button type="submit" id="btn-submit">ENVIAR</button> 
+
+                <div id="resultado"></div>
+         
+     </form>
+
+
+    <script>
+
+        (function(){
+
+         const form = document.querySelector('#formulario');
+
+         form.addEventListener('submit', function(e){ 
+            e.preventDefault(); // não deixa o form ser enviado(prevent o comportamento padrão dele)
+            const inputPeso = e.target.querySelector("#inp-peso");  // target indica o elemento clicado
+            const inputAltura = e.target.querySelector("#inp-altura"); 
+
+            const peso = Number(inputPeso.value); // recupera valor digitado do input de tipo NUMBER
+            const altura = Number(inputAltura.value);
+
+            if(!peso){ // se o peso não for verdade(nan,null,false)
+                mostrarResultado('Peso Inválido', false); 
+                return; // para a função
+            }
+
+            if(!altura){
+                mostrarResultado('Altura inválida', false);
+                return;
+            }
+
+            const imc = getImc(peso,altura);
+            const nivelIMC = getNivelIMC(imc);
+
+            const mensagem = 'Seu IMC é ' + imc + ' ( ' + nivelIMC  + ' ) ';
+
+            mostrarResultado(mensagem, true);
+
+         })
+
+         function getImc(peso,altura){
+            const imc = peso/(altura*altura)
+            return imc.toFixed(2); // retorna o valor de IMC com duas casas decimais
+
+         }
+
+         function getNivelIMC(imc){
+
+            const nivel = ['Abaixo do peso', 'Peso normal','Sobrepeso','Obesidade Grau 1','Obesidade Grau 2','Obesidade Grau 3'];
+
+            if(imc >= 39.9) return nivel[5]; // já que return para a função, não precisa de de else if
+            
+            if(imc >= 34.9) return nivel[4];
+            
+            if(imc >= 29.9)return nivel[3];
+
+            if(imc >= 24.9) return nivel[2];
+            
+            if(imc >= 18.5) return nivel[1];
+            
+            if(imc < 18.5) return nivel[0];
+            
+
+         }
+
+        
+         function criaParagrafo(){
+            const p = document.createElement('p'); // criação de paragrafo(HTML) no JavaScript
+            return p; // retorna o p para a funcao
+           
+         }
+
+         function mostrarResultado(content, isValid){
+            const divResultado = document.querySelector("#resultado"); // DOM
+            divResultado.innerHTML = '';
+            const p = criaParagrafo(); // cria paragrafo e armazena na const p 
+
+            if(isValid){
+                p.classList.add('paragrafo-resultado');
+            } else{
+                p.classList.add('incorreto')
+            }
+
+            p.innerHTML = content; // vai mostrar o content passado no parametro na divResultado como paragrafo
+            divResultado.appendChild(p);// insere o elemento p na div resultado como filho
+            // <div id='resultado'>
+                // <p>PARAGRAFO</p>
+            //</div>
+        
+         }
+            
+        })();
+
+    </script>
+    
+</body>
+</html>
