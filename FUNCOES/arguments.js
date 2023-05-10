@@ -1,11 +1,18 @@
-function somar(){
-    /* Arguments - Pega os argumentos passados para a função*/ 
-    let total = 0;
-    for(i = 0; i < arguments.length; i++){
-        total += arguments[i];
+let oi = 'OI';
+const ola = 'Olá'
+
+    if(true){      
+        let hi = 'Hi'
+        console.log(hi);
     }
 
-    return total;
-}
+    if(true){
+        const hey = 'Hey'
+        console.log(hey);
 
-console.log(somar(1,5,10));
+    }
+   
+console.log(oi);
+console.log(ola);
+
+
