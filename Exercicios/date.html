@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+   <style>
+
+    html{
+        height: 100vh;
+    }
+    body{
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightblue;
+    }
+    .container{
+        padding: 10px;
+        background-color: white;
+        border-radius: 15px;
+       
+        
+    }
+   </style>
+</head>
+<body>
+
+    <section class="container">
+        <h1></h1>
+    </section>
+
+    <script>
+
+        (function(){
+
+        // const h1 = document.querySelector('.container h1')
+     
+
+
+        // const data = new Date();
+        // const hora = horaFormatada(data.getHours());
+        // const minuto = horaFormatada(data.getMinutes());
+        
+
+
+        // function criarData(data){
+
+        // const dataDia = data.getDate();
+        // const dataNome = data.getDay();
+        // const mes = data.getMonth();
+        // const ano = data.getFullYear();
+
+        // return nomeDia(dataNome) + ', ' + dataDia + ' de ' + NomeMes(mes) + ' ' + ano +  ' ' + hora + ':' + minuto;
+
+
+        // }
+
+        // function NomeMes(mes){
+        //     const nomeMes = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+        //     return nomeMes[mes];
+
+        // }
+
+        // function nomeDia(dataNome){
+
+        //     const nomeDia = ['Domingo','Segunda','Terça-Feira','Quarta-Feira','Quinta-Feira','Sexta-Feira','Sábado'];
+        //     return nomeDia[dataNome];
+            
+        // }
+
+        // function horaFormatada(tempo){
+        //    return tempo < 10 ? '0' + tempo : tempo;
+        // }
+
+        // h1.innerHTML = criarData(data);
+
+
+
+
+        // FORMA COM MENOS CODIFICAÇÃO E PREFERIDA
+        const h1 = document.querySelector('.container h1');
+        const data = new Date();
+        const opcoes = {dateStyle: 'full', timeStyle:'short'};
+        h1.innerHTML = data.toLocaleString('pt-BR', opcoes);
+     
+
+
+        })();
+
+       
+        
+    </script>
+    
+</body>
+</html>
