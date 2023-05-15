@@ -12,11 +12,11 @@
     
     
     for(let i = 0; i < elementos.length; i++){
-        let { tag , texto } = elementos[i];
-        let tagCriada = document.createElement(tag);
-        tagCriada.innerHTML = texto;
-        div.appendChild(tagCriada);
+        let { tag , texto } = elementos[i]; // desestruturação
+        let tagCriada = document.createElement(tag); // tag(elementos) armazenada em tagCriada
+        tagCriada.innerHTML = texto; // tagCriada vai receber o valor de texto(elementos)
+        div.appendChild(tagCriada); // div vai ser pai de tagCriada
     }
     
-    container.appendChild(div);
+    container.appendChild(div); // container pai da div
 })();
