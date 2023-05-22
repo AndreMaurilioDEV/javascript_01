@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/3181da0dea.js" crossorigin="anonymous"></script>
+    <title>Lista Tarefas</title>
+    
+    <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');      
+        body{
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+            background-color: darkseagreen;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container{
+            background-color: white;
+            padding: 70px;
+            border-radius: 15px;
+        }
+
+        html{
+            font-size: 170%;
+            font-family: Poppins, sans-serif;
+        }
+
+        .feito::before{
+            /*text-decoration: line-through 3px green;*/
+            content: '✔️';
+           
+        }
+
+        .feito{
+            color: green;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        
+
+        
+
+
+        
+    </style>
+</head>
+<body>
+
+    <section class="container">
+        <div class="relogio"></div>
+        <h1>Lista de Tarefas</h1>
+        <input type="text" class="input-nova-tarefa">
+        <button class="btn-add-tarefa">Adicionar Tarefa</button>
+        <ul class="tarefas"></ul>
+
+    </section>
+
+    
+    <script src="listaTarefas.js"></script>
+    
+</body>
+</html>
