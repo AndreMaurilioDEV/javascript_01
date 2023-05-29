@@ -1,0 +1,88 @@
+function criaCalculadora(){
+    return {
+        display: document.querySelector('.display'), // display é um atributo do objeto
+        
+
+        inicia(){
+            this.cliqueBotoes(); // referenciar alguma chave dentro do objeto é preciso de this
+            this.pressionaEnter();
+            
+        },
+
+        pressionaEnter(){
+            this.display.addEventListener('keypress', (e) => {
+                if(e.keyCode === 13){
+                    this.realizaConta();
+                }
+            })
+        },
+
+        clearDisplay(){
+            this.display.value = ' ';
+        },
+
+        ApagaUmCaracterer(){
+            this.display.value = this.display.value.slice(0, -1);
+        },
+
+
+        realizaConta(){
+            let conta = this.display.value;
+
+            try{
+               conta = eval(conta); // função eval - pouca segurança
+
+               if(!conta){ // se a conta for inválida vai exibir o alert
+                alert("Conta Inválida") 
+                return;
+               }
+               this.display.value = conta; // ao contrário vai executar a conta
+
+            }catch(e){
+                alert("Conta Inválida") 
+                return;
+            }
+        },
+
+        cliqueBotoes(){
+             // this - calculadora
+            document.addEventListener('click', (e) => { 
+                // o this fora é a calculadora, com arrow function permanece o this de fora
+                // com function() o this seria document 
+                const elemento = e.target;
+
+                if(elemento.classList.contains('btn-num')) {
+                    this.btnParaDisplay(elemento.innerText); // elemento que está sendo clicado com target
+                    // método chamado de outro método (this)
+                    // esse this aponta pra o document
+                }
+
+                if(elemento.classList.contains('btn-clear')){
+                    this.clearDisplay();
+                }
+
+                if(elemento.classList.contains('btn-del')){
+                    this.ApagaUmCaracterer();
+                }
+
+                if(elemento.classList.contains('btn-eq')){
+                    this.realizaConta();
+                }
+
+                this.display.focus();
+            }); 
+        },
+
+
+        btnParaDisplay(valor){
+            this.display.value += valor; // concatena o que tiver no diplay + o que for clicado dps
+        },
+
+        
+
+    };
+}
+
+
+const calculadora = criaCalculadora();
+calculadora.inicia();
