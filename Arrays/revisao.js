@@ -67,6 +67,18 @@ console.log(novos2);
 console.log(novos3);
 
 console.log('---- SPLICE -----')
+// modifica o array
+ //splice(indice atual, delete, adiciona);
+
+
+const frutas = ['Melão','Melancia','Laranja','Mamão','Maça','Uva','Banana'];
+//const removidos = frutas.splice(3, Number.MAX_VALUE); // a partir do índice 3 remove ate o final
+//const removidos = frutas.splice(2,0,'Abacaxi'); adiciona Abacaxi no índice 2 
+//const removidos = frutas.splice(2,1,'Abacaxi');  remove elemento do índice 2 e adiciona
+const removidos = frutas.splice(2,2,'Abacaxi');  // remove elemento do índice 2 e 3 e adiciona
+console.log(frutas, 'Removidos: ' + removidos);
+
+
 
 
 console.log('----- STRING PARA ARRAY ------');
