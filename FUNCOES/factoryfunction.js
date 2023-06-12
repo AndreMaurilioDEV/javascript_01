@@ -1,5 +1,5 @@
 function criaPessoa(nome , sobrenome, altura, peso){
-    return {
+    return { // retorna o objeto
         
         nome , 
         sobrenome,

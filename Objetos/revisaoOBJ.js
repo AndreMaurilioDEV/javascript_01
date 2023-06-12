@@ -34,7 +34,7 @@ function criaCarro(modelo, ano, cor){
     return{
         modelo: modelo,
         ano: ano, 
-        cor,
+        cor: cor,
 
         get carro(){
             return 'Modelo: ' + modelo + ' || Ano: ' + ano + ' || Cor: ' + cor;
@@ -61,7 +61,6 @@ function Pessoa(nome, sobrenome){
     Object.freeze(this); // NENHUM objeto dessa função pode ser alterado mais 
    
 }
-
 
     const p1 = new Pessoa('André', 'Maurilio');
     delete p1.nome; // não altera por causa do freeze
